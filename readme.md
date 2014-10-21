@@ -2,7 +2,7 @@
 
 **Description:**
 
-Your challenge — should you choose to accept it — is to create a credential blackbook. A lean app that keeps track of projects and their respective credentials. This app should allow us to accomplish the following objectives:
+Your challenge Â— should you choose to accept it Â— is to create a credential blackbook. A lean app that keeps track of projects and their respective credentials. This app should allow us to accomplish the following objectives:
 
 * Add projects with a name and a description
 
@@ -50,11 +50,13 @@ Please make this app as lean or robust as you would like, and we estimate the co
 
 * Minimal wheels re-invented
 
-* We are WOW’ed
+* We are WOWÂ’ed
 
 **Deliverables:**
 
 * URL to the working app
+
+* Share this repo with tim.wickstrom@datafi.com
 
 * Update the README file with the following:
 
@@ -62,6 +64,4 @@ Please make this app as lean or robust as you would like, and we estimate the co
 
     * Instructions on how to use the app
 
-    * An explanation of what you did and why for all aspects of the application preferably with time spent on all the various aspects development (including research time).
-
-
+    * An explanation of what you did and why for all aspects of the application preferably with time spent on all the various aspects of development (including research time).
