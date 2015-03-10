@@ -58,7 +58,7 @@ module.exports = Backbone.View.extend({
         this.$('.has-error').removeClass('has-error');
         var divMessage = this.$('#divMessage').addClass('hidden');
         for (var i = 0, l = inputs.length; i < l; i++) {
-            if (inputs[i].value.length === 0){
+            if (inputs[i].value.length === 0 && inputs[i].type !== 'radio'){
                 if (inputs[i].name  === 'email' || inputs[i].name === 'age') {
                     divMessage.html('Please enter an ' + inputs[i].name + ' to continue.').removeClass('hidden'); // proper Engrish is a must
                 } else {
@@ -73,6 +73,8 @@ module.exports = Backbone.View.extend({
         }
         if (document.getElementById('radFemale').checked){
             values.gender = 'F';
+        } else {
+            values.gender = 'M';
         }
         this.model.set(values); // correct way to set model values
 
