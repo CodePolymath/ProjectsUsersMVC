@@ -21,7 +21,6 @@ exports.createProjectUser = function(req, res) {
         projectUser.credentialType = req.query.credentialtype;
     }
     var strSQL = 'INSERT blackbook.projects_users (projectid, userid, username, credentialtype) VALUES (' + projectUser.projectId + ',' + projectUser.userId + ',"' +  projectUser.userName + '","' + projectUser.credentialType + '"); SELECT * FROM blackbook.projects_users WHERE id = LAST_INSERT_ID()';
-    //var strSQLreturn = 'SELECT * FROM blackbook.projects_users WHERE id = LAST_INSERT_ID()';
     connection.query(strSQL, function(err, rows){
         if (!err) { // no matching data
             res.status(201);
@@ -30,6 +29,27 @@ exports.createProjectUser = function(req, res) {
         } else {
             res.status(409);
             res.send('Entry already exists');
+            return;
+        }
+    });
+};
+
+exports.deleteProjectUser = function(req, res){
+    var id;
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
+        id = req.body.id;
+    } else { // data passed as querystring (via Postman)
+        id = req.query.id;
+    }
+    var strSQL = 'DELETE FROM blackbook.projects_users WHERE id = ' + id;
+    connection.query(strSQL, function(err, rows){
+        if (!err) { // no matching data
+            res.status(204);
+            res.send(rows);
+            return;
+        } else {
+            res.status(500);
+            res.send(err.message);
             return;
         }
     });

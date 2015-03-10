@@ -13,7 +13,8 @@ module.exports = Backbone.View.extend({
     events: {
         'change #selField': 'queryValues',
         'change #selValue': 'filterCollection',
-        'click #btnReset': 'resetView'
+        'click #btnReset': 'resetView',
+        'click .glyphicon-remove': 'removeProjectUser'
     },
 
     collection: new ProjectCollection(),
@@ -65,23 +66,7 @@ module.exports = Backbone.View.extend({
             for (i = 0, l = that.projectUsers.models.length; i < l; i++){
                 if (that.projectUsers.models[i].attributes.projectid === model.attributes.id) {
                     booAppend = true;
-                    var newLi = document.createElement('li');
-                    var newSpan = document.createElement('span');
-                    newSpan.innerHTML = that.projectUsers.models[i].attributes.username;
-                    newLi.appendChild(newSpan);
-                    newSpan = document.createElement('span');
-                    switch (that.projectUsers.models[i].attributes.credentialtype.toString()){
-                        case '1':
-                            newSpan.innerHTML = 'web';
-                        break;
-                        case '2':
-                            newSpan.innerHTML = 'ssh';
-                        break;
-                        case '3':
-                            newSpan.innerHTML = 'ftp';
-                        break;
-                    }
-                    newLi.appendChild(newSpan);
+                    var newLi = that.createLi(that.projectUsers.models[i],that.projectUsers.models[i].attributes.username);
                     fragment.appendChild(newLi);
                 }
             }
@@ -99,6 +84,51 @@ module.exports = Backbone.View.extend({
                 this.$el.find('#spnProjectCount').html(this.collection.models.length.toString() + ' Projects Found');
         }
         return this;
+    },
+
+    createLi: function(model, username){
+        var newLi = document.createElement('li');
+        var newSpan = document.createElement('span');
+        switch (model.attributes.credentialtype.toString()){
+            case '1':
+                newSpan.className = 'glyphicon glyphicon-globe';
+                newSpan.title = 'web access';
+            break;
+            case '2':
+                newSpan.className = 'glyphicon glyphicon-lock';
+                newSpan.title = 'ssh access';
+            break;
+            case '3':
+                newSpan.className = 'glyphicon glyphicon-open';
+                newSpan.title = 'ftp access';
+            break;
+        }
+        newLi.appendChild(newSpan);
+        newSpan = document.createElement('span');
+        newSpan.innerHTML = username;
+        newLi.appendChild(newSpan);
+
+        newSpan = document.createElement('a');
+        newSpan.className = 'glyphicon glyphicon-remove';
+        newSpan.title = 'remove access';
+        newSpan.setAttribute('data-id',model.id);
+        newLi.appendChild(newSpan);
+        newLi.id = 'liUserAccess-' + model.id;
+        return newLi;
+    },
+
+    removeProjectUser: function(e){
+        var target = e.target;
+        $.ajax({
+            type: 'delete',
+            url: 'api/projectuser',
+            data: {
+                id: target.getAttribute('data-id')
+            },
+            success: function(){
+                target.parentNode.parentNode.removeChild(target.parentNode);
+            }
+        });
     },
 
     queryValues: function(){

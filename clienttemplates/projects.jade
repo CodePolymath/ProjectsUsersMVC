@@ -8,7 +8,6 @@ ul.ulProjects
                 dl.dl-horizontal
                     dt ProjectName:
                     dd= model.attributes.projectname
-                    dt Description:
-                    dd= model.attributes.description
+                    .divDescription= model.attributes.description
                 .divProjectUser(id='divProjectUsers-'+model.attributes.id, data-id=model.attributes.id)
                 ul.ulUsers.hidden(id='ulUsers-'+model.attributes.id)

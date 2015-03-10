@@ -111,7 +111,7 @@ The app should then be running under:
     CREATE DATABASE blackbook;
 
     CREATE USER 'blackbook_node'@'localhost' IDENTIFIED BY 'wLc0Dr53zAb2BfWp';
-    GRANT SELECT, INSERT, UPDATE ON `blackbook`.* TO 'blackbook_node'@'localhost';
+    GRANT SELECT, INSERT, UPDATE, DELETE ON `blackbook`.* TO 'blackbook_node'@'localhost';
 
     CREATE TABLE `blackbook`.`users` (
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

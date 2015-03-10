@@ -12,6 +12,8 @@ var app = express();
 
 app.set('view engine', 'jade');
 app.use('/css', express.static(__dirname + '/public/css')); // allow access to public css files
+app.use('/fonts', express.static(__dirname + '/public/fonts'));
+
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
@@ -34,6 +36,7 @@ app.get('/api/projects', projects.getAll);
 app.get('/api/users', users.getAll);
 app.get('/api/projectuser', projectuser.getAll);
 app.get('/api/checkuser', users.checkUserExists);
+app.delete('/api/projectuser', projectuser.deleteProjectUser)
 /* END ALL public routes */
 
 app.listen(3000);

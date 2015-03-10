@@ -21,7 +21,7 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(projectid) {
-            buf.push('<div class="form-horizontal"><form class="divControls"><select' + jade.attr("data-id", projectid, true, false) + jade.attr("id", "selProject-" + projectid, true, false) + ' class="form-control selAddUser">Please select</select><label class="radio-inline"><input type="radio" name="radCredential" value="1" checked="checked"/>web</label><label class="radio-inline"><input type="radio" name="radCredential" value="2"/>ssh</label><label class="radio-inline"><input type="radio" name="radCredential" value="3"/>ftp</label></form><button' + jade.attr("data-id", projectid, true, false) + ' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button><span>Add a User</span></div>');
+            buf.push('<div class="form-horizontal"><form class="divControls"><select' + jade.attr("data-id", projectid, true, false) + jade.attr("id", "selProject-" + projectid, true, false) + ' class="form-control selAddUser">Please select</select><label class="radio-inline"><input type="radio" name="radCredential" value="1" checked="checked"/>web</label><label class="radio-inline"><input type="radio" name="radCredential" value="2"/>ssh</label><label class="radio-inline"><input type="radio" name="radCredential" value="3"/>ftp</label></form><button' + jade.attr("data-id", projectid, true, false) + ' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button><span class="spnMessage">Add a User</span></div>');
         }).call(this, "projectid" in locals_for_with ? locals_for_with.projectid : typeof projectid !== "undefined" ? projectid : undefined);
         return buf.join("");
     };
@@ -55,7 +55,7 @@
                     for (var $index = 0, $l = $obj.length; $index < $l; $index++) {
                         var model = $obj[$index];
                         if (model.showing) {
-                            buf.push("<li" + jade.attr("id", "liProject-" + model.id, true, false) + ' class="liProjects list-unstyled"><dl class="dl-horizontal"><dt>ProjectName:</dt><dd>' + jade.escape(null == (jade_interp = model.attributes.projectname) ? "" : jade_interp) + "</dd><dt>Description:</dt><dd>" + jade.escape(null == (jade_interp = model.attributes.description) ? "" : jade_interp) + "</dd></dl><div" + jade.attr("id", "divProjectUsers-" + model.attributes.id, true, false) + jade.attr("data-id", model.attributes.id, true, false) + ' class="divProjectUser"></div><ul' + jade.attr("id", "ulUsers-" + model.attributes.id, true, false) + ' class="ulUsers hidden"></ul></li>');
+                            buf.push("<li" + jade.attr("id", "liProject-" + model.id, true, false) + ' class="liProjects list-unstyled"><dl class="dl-horizontal"><dt>ProjectName:</dt><dd>' + jade.escape(null == (jade_interp = model.attributes.projectname) ? "" : jade_interp) + '</dd><div class="divDescription">' + jade.escape(null == (jade_interp = model.attributes.description) ? "" : jade_interp) + "</div></dl><div" + jade.attr("id", "divProjectUsers-" + model.attributes.id, true, false) + jade.attr("data-id", model.attributes.id, true, false) + ' class="divProjectUser"></div><ul' + jade.attr("id", "ulUsers-" + model.attributes.id, true, false) + ' class="ulUsers hidden"></ul></li>');
                         }
                     }
                 } else {
@@ -64,7 +64,7 @@
                         $l++;
                         var model = $obj[$index];
                         if (model.showing) {
-                            buf.push("<li" + jade.attr("id", "liProject-" + model.id, true, false) + ' class="liProjects list-unstyled"><dl class="dl-horizontal"><dt>ProjectName:</dt><dd>' + jade.escape(null == (jade_interp = model.attributes.projectname) ? "" : jade_interp) + "</dd><dt>Description:</dt><dd>" + jade.escape(null == (jade_interp = model.attributes.description) ? "" : jade_interp) + "</dd></dl><div" + jade.attr("id", "divProjectUsers-" + model.attributes.id, true, false) + jade.attr("data-id", model.attributes.id, true, false) + ' class="divProjectUser"></div><ul' + jade.attr("id", "ulUsers-" + model.attributes.id, true, false) + ' class="ulUsers hidden"></ul></li>');
+                            buf.push("<li" + jade.attr("id", "liProject-" + model.id, true, false) + ' class="liProjects list-unstyled"><dl class="dl-horizontal"><dt>ProjectName:</dt><dd>' + jade.escape(null == (jade_interp = model.attributes.projectname) ? "" : jade_interp) + '</dd><div class="divDescription">' + jade.escape(null == (jade_interp = model.attributes.description) ? "" : jade_interp) + "</div></dl><div" + jade.attr("id", "divProjectUsers-" + model.attributes.id, true, false) + jade.attr("data-id", model.attributes.id, true, false) + ' class="divProjectUser"></div><ul' + jade.attr("id", "ulUsers-" + model.attributes.id, true, false) + ' class="ulUsers hidden"></ul></li>');
                         }
                     }
                 }

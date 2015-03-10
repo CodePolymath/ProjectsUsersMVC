@@ -64,30 +64,19 @@ module.exports = Backbone.View.extend({
                 this.model.save(null,{
                     success: function(data){
                         that.addUserLi(data);
+                    },
+                    error: function(model, response, options){
+                        var spnMessage = that.$el.find('.spnMessage').html('Credential exists');
+                        setTimeout(function(){
+                            spnMessage.html('Add a User');
+                        },1500);
                     }
                 });
         }
     },
 
     addUserLi: function(data){
-        var newLi = document.createElement('li');
-        var newSpan = document.createElement('span');
-        newSpan.innerHTML = data.attributes.username;
-        newLi.appendChild(newSpan);
-        newSpan = document.createElement('span');
-            switch (data.attributes.credentialtype.toString()){
-            case '1':
-                newSpan.innerHTML = 'web';
-            break;
-            case '2':
-                newSpan.innerHTML = 'ssh';
-            break;
-            case '3':
-                newSpan.innerHTML = 'ftp';
-            break;
-        }
-        newLi.appendChild(newSpan);
-
+        var newLi = this.parentView.createLi(data,data.attributes.username);
         this.$el.parent().find('.ulUsers').append(newLi);
     },
 

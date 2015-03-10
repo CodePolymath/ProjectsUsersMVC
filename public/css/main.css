@@ -1,9 +1,15 @@
 body {padding: 5px;
     text-align: center;}
 
+.navbar-nav li.active {
+    border: solid 1px #aaaaaa;
+    border-width: 0 1px;
+    background: #eeeeee;
+}
+
 #content {
     width: 75%;
-    margin: 0 auto;
+    margin: 52px auto 0 auto;
     text-align: left;
 }
 
@@ -39,7 +45,8 @@ body {padding: 5px;
     background: #eeeeee;
     padding: 5px;
     border: 1px solid #aaaaaa;
-    box-shadow: 0px 0px 2px 2px #cccccc;
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 4px 1px #cccccc;
 }
 
 .liProjects .dl-horizontal {
@@ -71,6 +78,16 @@ body {padding: 5px;
     margin-left: 15px;
 }
 
+.dl-horizontal dt:nth-of-type(1), .dl-horizontal dd:nth-of-type(1) {
+    font-size: 20px;
+}
+
+.dl-horizontal .divDescription {
+    color: #00aa00;
+    width: 50%;
+    margin: 10px auto;
+}
+
 .liProjects .divControls {
     opacity: 0;
     display: none;
@@ -91,7 +108,8 @@ body {padding: 5px;
 
 .liProjects .ulUsers {
     width: 50%;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
+    padding-left: 0;
     list-style: none;
     text-align: center;
 }
@@ -99,13 +117,32 @@ body {padding: 5px;
 .liProjects .ulUsers li {
     margin: 0 auto 5px auto;
     height: 26px;
-    width: 40%;
-    border: 1px solid #ffffff;
-    background-color: #cccccc;
+    width: 50%;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    text-align: left;
 }
 
 .liProjects .ulUsers li span {
     margin-right: 5px;
     display: inline-block;
     padding: 2px 5px 5px 5px;
+    color: #00aa00;
+}
+
+.liProjects .ulUsers li span.glyphicon {
+    color: #666666;
+}
+
+.liProjects .ulUsers li a.glyphicon-remove {
+    float: right;
+    margin: 4px 5px auto auto;
+    color: #666666;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.liProjects .ulUsers li a.glyphicon-remove:hover {
+    color: #ff2222;
+    text-decoration: none;
 }
