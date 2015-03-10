@@ -66,16 +66,17 @@ body {padding: 5px;
 
 .dl-horizontal dt, .dl-horizontal dd {
     margin: auto;
-    width: 45%;
     display: inline-block;
 }
 
 .dl-horizontal dt {
     text-align: right;
+    width: 50%;
 }
 
 .dl-horizontal dd {
     margin-left: 15px;
+    width: 45%;
 }
 
 .dl-horizontal dt:nth-of-type(1), .dl-horizontal dd:nth-of-type(1) {
@@ -86,6 +87,7 @@ body {padding: 5px;
     color: #00aa00;
     width: 50%;
     margin: 10px auto;
+    text-align: center;
 }
 
 .liProjects .divControls {
