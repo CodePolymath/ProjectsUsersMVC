@@ -3,23 +3,9 @@ var mysql = require('mysql'),
 
 var connection = mysql.createConnection(sql_helper.SQL_CONN);
 
-connection.query('USE blackbook');
 
 exports.getAll = function(req, res) {
-    var filterBy = req.query.filter;
-    var groupBy = req.query.group;
-
     var strSQL = 'SELECT id, projectname, description FROM blackbook.projects;';
-    if (typeof filterBy !== 'undefined' && filterBy !== null){
-        var splitFilter = filterBy.split('|');
-        var filterCol = splitFilter[0];
-        var filterVal = splitFilter[1];
-        strSQL = strSQL + ' WHERE ' + filterCol.toLowerCase() + ' = "' + filterVal + '"';
-    }
-
-    if (typeof groupBy !== 'undefined' && groupBy !== null){
-        strSQL = strSQL + ' GROUP BY ' + groupBy.toLowerCase();
-    }
 
     connection.query(strSQL, function(err, rows){
         if (rows.length === 0) { // no matching data

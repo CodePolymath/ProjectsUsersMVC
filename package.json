@@ -1,6 +1,6 @@
 {
-  "name": "technicolor_test",
-  "description": "Technicolor test app",
+  "name": "BlackbookApp",
+  "description": "DataFi test app using Backbone, Node, MySQL and Express",
   "version": "0.0.1",
   "private": false,
   "repository": {

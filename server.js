@@ -11,7 +11,7 @@ var express = require('express'),
 var app = express();
 
 app.set('view engine', 'jade');
-app.use('/css', express.static(__dirname + '/public/css')); // allow access to public css files
+app.use('/css', express.static(__dirname + '/public/css')); // allow access to public files
 app.use('/fonts', express.static(__dirname + '/public/fonts'));
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies

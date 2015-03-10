@@ -154,3 +154,53 @@ The app should then be running under:
     INSERT `blackbook`.`credential_types` (description, fields) VALUES ('web', 'username,password');
     INSERT `blackbook`.`credential_types` (description, fields) VALUES ('ssh', 'username,password,host,port');
     INSERT `blackbook`.`credential_types` (description, fields) VALUES ('ftp', 'username,password,port');
+
+** Tech stack decisions: **
+
+backbone - used as a display layer JavaScript MVC. It was chosen because it is very basic and doesn't require too much overhead to get an app up and running quickly.
+
+body-parser - a plugin which allows express.js to "read" POSTed values
+
+browserify and browserify-middleware - very powerful plugin, similar to GRUNT. browserify allows all clientside modules to make require()-like dependency calls and reuse libraries included in the Node / Express app. It also compiles all client side files into one single .js file to deliver to the user.
+
+crypto-js - no one should EVER store passwords in plain text. crypto-js was used to store individually salted hashes of the users' passwords in the db.
+
+express - used as the server app to both respond to API calls, and act as a entrypoint for the client app, as well as packing all files and dependencies via browserify.
+
+jade - HTML templating
+
+jquery - because jQuery
+
+ms - dependency for browserify
+
+mysql - db solution that runs on all platforms
+
+prepare-response - dependency for browserify
+
+templatizer - converts all .jade html template files into executable JavaScript functions for fast usage in the client (no compiling HTML templates "on the fly").
+
+uglify - dependency for browserify to obfuscate code (not implemented)
+
+** Developers post-mortem thoughts: **
+
+Test data is not provided because the Backbone UI is setup to do enough CRUD operations to create useful test data.
+
+Halfway through development, I realized a noSQL solution would have worked better because of the need to return "deep" data models from the server, but I did not have the time to invest in refactoring away from MySQL, which was already installed on my dev machine and working when I began development (no port conflicts, setup, etc to handle).
+
+The api is a little hacky, I didn't concentrate too much on data-modeling or inheritence, and there is no validation, connection pooling or security on the routes, which should have been done with oAuth or httpAuth. However, the passwords are individually salted and hashed with 256 SHA for irreverisbly secure storage.
+
+The front end is very very basic, and could use some refactoring. If I had more time to invest, more of the subviews (such as those for the collection of users assigned to each project) should be built into true subview modules, instead of HTML that is rendered via JavaScript and documentFragments. This mish-mash of DOM rendering methods does have the side-effect of showing the flexibility of Backbone.
+
+The CSS was so minimal that I didn't bother to use a CSS preprocessor. SCSS compiled via Browserify with something like Stylus when the app is spun-up would be ideal as the CSS needs get more complex. The CSS is mostly someone else's Bootstrap theme with some small tweaks of my own (no need to reinvent Bootstrap).
+
+I began setting up the various credential types and fields on the MySQL server for various login types, but ran out of time to commit to the project, so the UI and CRUD on those are not implemented.
+
+All JavaScript was run through jsHint with basic settings (compiled files, such as the templates.js file that serves all HTML templates will not pass jsHint).
+
+Overall, I spent about 18 hours on this project, broken down roughly as follows:
+
+Day 1: 6 hours - technology stack decisions, setting up api routes, creating MySQL server tables, testing api routes, starting basic UI templating, views, models and css
+
+Day 2: 3 hours - small improvements to api routes, UI tweaks, finshing api routes, moving hashing functions and mysql connection settings to helper modules
+
+Day 3: 9 hours - finishing all clientside CRUD operations, setting up UI for create / delete on project-user relationships, major CSS overhaul, testing, updating readme

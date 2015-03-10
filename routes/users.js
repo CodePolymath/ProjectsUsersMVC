@@ -4,8 +4,6 @@ var sql_helper = require('../helpers/sql_conn'),
 
 var connection = mysql.createConnection(sql_helper.SQL_CONN);
 
-connection.query('USE blackbook');
-
 exports.getAll = function(req, res) {
     var filterBy = req.query.filter;
     var groupBy = req.query.group;
@@ -45,7 +43,6 @@ exports.checkUserExists = function (req, res) {
             res.status(403);
             res.send('There was a problem querying that user. Please try again');
         }
-        //connection.end();
     });
 };
 
@@ -88,6 +85,5 @@ exports.createUser = function(req, res) {
             res.status(403);
             res.send('There was a problem creating a new user. Please try again');
         }
-        //connection.end();
     });
 };

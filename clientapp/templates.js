@@ -28,7 +28,7 @@
 
     // home.jade compiled template
     templatizer["home"] = function tmpl_home() {
-        return '<h1>Login to the Test App</h1><div class="form-inline"><h4>Please login below:</h4><div class="form-group"><label for="username">User Name:</label><input type="text" name="username" class="form-control"/></div><div class="form-group"><label for="password">Password:</label><input id="inpPassword" type="password" name="password" class="form-control"/></div><div class="form-group"><button id="btnLogin" type="button" class="btn btn-success">Login</button></div></div><div id="divMessage" class="hidden"></div>';
+        return '<h1>Login to the Blackbook App</h1><div class="form-inline"><h4>Please login below:</h4><div class="form-group"><label for="username">User Name:</label><input type="text" name="username" class="form-control"/></div><div class="form-group"><label for="password">Password:</label><input id="inpPassword" type="password" name="password" class="form-control"/></div><div class="form-group"><button id="btnLogin" type="button" class="btn btn-success">Login</button></div></div><div id="divMessage" class="hidden"></div>';
     };
 
     // newproject.jade compiled template

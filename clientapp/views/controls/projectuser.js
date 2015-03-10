@@ -45,9 +45,9 @@ module.exports = Backbone.View.extend({
                         select.append(fragment);
                         var divControls = that.$el.find('.divControls');
                         divControls.addClass('showing');
-                        _.defer(function(){
+                        setTimeout(function(){
                             divControls.addClass('animated');
-                        });
+                        },20);
                         that.currentStep +=1;
                     }
                 });

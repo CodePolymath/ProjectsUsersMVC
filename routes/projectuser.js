@@ -5,8 +5,6 @@ var mysql = require('mysql'),
 var conSettings = extend({multipleStatements: true}, sql_helper.SQL_CONN);
 var connection = mysql.createConnection(conSettings);
 
-connection.query('USE blackbook');
-
 exports.createProjectUser = function(req, res) {
     var projectUser = {};
     if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload

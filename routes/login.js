@@ -4,8 +4,6 @@ var sql_helper = require('../helpers/sql_conn'),
 
 var connection = mysql.createConnection(sql_helper.SQL_CONN);
 
-connection.query('USE blackbook');
-
 exports.login = function(req, res) {
     var user = {};
     if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
