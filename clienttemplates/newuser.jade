@@ -1,0 +1,32 @@
+h1 Create a New User
+.divNewUser
+    h4 All data is required:
+    .divUserData
+        .form-group
+            label(for='username') User Name:
+            input#inpUserName.form-control(type='text',name='username')
+        .form-group
+            label(for='password') Password:
+            input.form-control(type='password',name='password')
+        .form-group
+            label(for='username') Email:
+            input.form-control(type='text',name='email')
+        .form-group
+            label(for='password') City:
+            input.form-control(type='text',name='city')
+        .form-group
+            label(for='username') State:
+            input.form-control(type='text',name='state',maxlength='2')
+        .form-group
+            h5 Gender:
+            label.radio-inline.control-label
+                input#radFemale(type='radio',name='gender',value='F',checked='checked')
+                | Female
+            label.radio-inline.control-label
+                input#radMale(type='radio',name='gender',value='M')
+                | Male
+        .form-group
+            label(for='username') Age:
+            input.form-control(type='text',name='age',maxlength='3')
+        #divMessage.hidden
+        button.btn.btn-success(type='button')#btnCreate Create New User

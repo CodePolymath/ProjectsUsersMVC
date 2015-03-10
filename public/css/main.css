@@ -1,0 +1,111 @@
+body {padding: 5px;
+    text-align: center;}
+
+#content {
+    width: 75%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {margin-right: 5px;}
+
+.form-inline {margin-bottom: 20px;}
+
+.divNav a {margin-right: 10px;}
+
+.form-group label, .form-group select {margin-right: 10px;}
+
+.divProjectUser {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+/*.divProjectUser > * {
+    float: left;
+}*/
+
+.divProjectUser .btn {
+    padding: 8px 9px 10px 11px;
+    margin: 0 10px;
+}
+
+.divProjectUser > span {
+    padding: 6px 10px;
+}
+
+.liProjects, .liUsers {
+    margin-bottom: 30px;
+    background: #eeeeee;
+    padding: 5px;
+    border: 1px solid #aaaaaa;
+    box-shadow: 0px 0px 2px 2px #cccccc;
+}
+
+.liProjects .dl-horizontal {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.liProjects .selAddUser {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+
+.liProjects .selAddUser.showing {
+    display: inline-block;
+}
+
+.dl-horizontal dt, .dl-horizontal dd {
+    margin: auto;
+    width: 45%;
+    display: inline-block;
+}
+
+.dl-horizontal dt {
+    text-align: right;
+}
+
+.dl-horizontal dd {
+    margin-left: 15px;
+}
+
+.liProjects .divControls {
+    opacity: 0;
+    display: none;
+    transition: opacity .25s ease-in-out;
+}
+
+.liProjects .divControls.animated {
+    opacity: 1;
+}
+
+.liProjects .divControls.showing {
+    display: inline-block;
+}
+
+.liProjects .divControls .radio-inline {
+    padding-top: 0px;
+}
+
+.liProjects .ulUsers {
+    width: 50%;
+    margin: 20px auto 0 auto;
+    list-style: none;
+    text-align: center;
+}
+
+.liProjects .ulUsers li {
+    margin: 0 auto 5px auto;
+    height: 26px;
+    width: 40%;
+    border: 1px solid #ffffff;
+    background-color: #cccccc;
+}
+
+.liProjects .ulUsers li span {
+    margin-right: 5px;
+    display: inline-block;
+    padding: 2px 5px 5px 5px;
+}

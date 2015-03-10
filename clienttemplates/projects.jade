@@ -1,0 +1,14 @@
+h1 Current Projects
+h4
+    span#spnProjectCount No Projects Found
+ul.ulProjects
+    each model in models
+        if model.showing
+            li.liProjects.list-unstyled(id='liProject-' + model.id)
+                dl.dl-horizontal
+                    dt ProjectName:
+                    dd= model.attributes.projectname
+                    dt Description:
+                    dd= model.attributes.description
+                .divProjectUser(id='divProjectUsers-'+model.attributes.id, data-id=model.attributes.id)
+                ul.ulUsers.hidden(id='ulUsers-'+model.attributes.id)
