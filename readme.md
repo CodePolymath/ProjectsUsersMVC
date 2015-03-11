@@ -84,9 +84,24 @@ To start a terminal session of MySQL:
 
 MAMP: Start up a MySQL terminal session:
 
-    `/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot`
+    /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
 
-MySQL for Windoze: http://dev.mysql.com/doc/refman/5.0/en/windows-start-command-line.html
+MySQL for Windoze:
+
+http://dev.mysql.com/downloads/mysql/
+http://dev.mysql.com/doc/refman/5.6/en/windows-start-command-line.html
+
+In cmd.exe:
+
+    cd "C:\Program Files\MySQL\MySQL Server 5.6\bin"
+        (you may need to adjust your MySql folder version)
+    mysqladmin -u root password password
+    mysqld
+    mysql -h localhost -u root -p
+
+At the password prompt, type:
+
+    password
 
 You may have to adjust the port that MySQL is expected to run under in the app. There are TODO: comments next to the MySQL port number in the /routes/users.js and /routes/login.js files.
 

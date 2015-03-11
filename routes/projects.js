@@ -9,6 +9,10 @@ exports.getAll = function(req, res) {
     var strSQL = 'SELECT id, projectname, description FROM blackbook.projects;';
 
     connection.query(strSQL, function(err, rows){
+        if (err) {
+            res.send(err);
+            return;
+        }
         if (rows.length === 0) { // no matching data
             res.status(204);
             res.send('No matching records found. Please try again');
