@@ -7,7 +7,7 @@ module.exports = Backbone.View.extend({
     el: $('#content'),
 
     events: {
-        'click #btnCreate': 'createProject'
+        'click #btnCreateProject': 'createProject'
     },
 
     model: new ProjectModel(),

@@ -33,7 +33,7 @@
 
     // newproject.jade compiled template
     templatizer["newproject"] = function tmpl_newproject() {
-        return '<h1>Create a New Project</h1><div class="divNewProject"><h4>All data is required:</h4><div class="divProjectData"><div class="form-group"><label for="projectname">Project Name:</label><input type="text" name="projectname" class="form-control"/></div><div class="form-group"><label for="description">Description:</label><input type="text" name="description" class="form-control"/></div><div id="divMessage" class="hidden"></div><button type="button" id="btnCreate" class="btn btn-success">Create New Project</button></div></div>';
+        return '<h1>Create a New Project</h1><div class="divNewProject"><h4>All data is required:</h4><div class="divProjectData"><div class="form-group"><label for="projectname">Project Name:</label><input type="text" name="projectname" class="form-control"/></div><div class="form-group"><label for="description">Description:</label><input type="text" name="description" class="form-control"/></div><div id="divMessage" class="hidden"></div><button type="button" id="btnCreateProject" class="btn btn-success">Create New Project</button></div></div>';
     };
 
     // newuser.jade compiled template
