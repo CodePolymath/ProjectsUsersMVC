@@ -110,7 +110,7 @@ ul {
 }
 
 .liProjects .ulUsers {
-    width: 50%;
+    width: 75%;
     margin: 10px auto 0 auto;
     padding-left: 0;
     list-style: none;
@@ -120,7 +120,7 @@ ul {
 .liProjects .ulUsers li {
     margin: 0 auto 5px auto;
     height: 26px;
-    width: 50%;
+    width: 75%;
     border: 1px solid #cccccc;
     background-color: #ffffff;
     text-align: left;

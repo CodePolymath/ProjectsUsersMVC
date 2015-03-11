@@ -77,7 +77,8 @@ module.exports = Backbone.View.extend({
 
     addUserLi: function(data){
         var newLi = this.parentView.createLi(data,data.attributes.username);
-        this.$el.parent().find('.ulUsers').append(newLi);
+        console.log(this.$el.parent().find('.ulUsers'));
+        this.$el.parent().find('.ulUsers').append(newLi).removeClass('hidden');
     },
 
     getProjectId: function(e){
@@ -92,7 +93,7 @@ module.exports = Backbone.View.extend({
         var selUser = this.parentView.$el.find('#selProject-' + projectId.toString());
         var user = {
             id: selUser.val(),
-            name: selUser[0].selectedOptions[0].text
+            name: selUser[0].children[selUser[0].selectedIndex].text
         };
         return user;
     }
