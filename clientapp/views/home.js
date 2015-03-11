@@ -4,7 +4,7 @@ var Backbone = require('backbone'),
 
 module.exports = Backbone.View.extend({
 
-    el: $('#content'),
+    className: 'divHome',
 
     events: {
         'click #btnLogin': 'login',
@@ -20,8 +20,7 @@ module.exports = Backbone.View.extend({
 
     render: function(){
         this.$el.html(this.template());
-        this.$('input:first').focus();
-        return this;
+        return this.el;
     },
 
     checkKeypress: function(e){

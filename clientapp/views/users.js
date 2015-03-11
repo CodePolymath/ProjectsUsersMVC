@@ -5,7 +5,7 @@ var Backbone = require('backbone'),
 
 module.exports = Backbone.View.extend({
 
-    el: $('#content'),
+    className: 'divUsers',
 
     model: UserModel,
 
@@ -19,14 +19,14 @@ module.exports = Backbone.View.extend({
     collection: new UserCollection(),
 
     initialize: function(){
-        var self = this;
+        var that = this;
         this.template = templates.users;
         this.collection.fetch({
             success: function(data){
                 for (var i = 0, l = data.models.length; i < l; i++){ // set a showing prop on all models
                     data.models[i].showing = true;
                 }
-                self.render(); // only render this view after the data is fetched
+                app.renderView(that);
             }
         });
     },
@@ -59,7 +59,7 @@ module.exports = Backbone.View.extend({
             selFields[0].selectedIndex = this.fieldsIndex;
 
         }
-        return this;
+        return this.el;
     },
 
     deleteUser: function(e){
@@ -68,7 +68,7 @@ module.exports = Backbone.View.extend({
         var liRemove = that.$el.find('#liUser-' + userid);
         this.collection.get({id:userid}).destroy({
             success: function(){
-                if (app.isIE9) {
+                if (app.useTranstions === false){
                     liRemove.remove();
                 } else {
                     liRemove.addClass('fadeOut');

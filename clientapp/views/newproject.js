@@ -4,10 +4,10 @@ var Backbone = require('backbone'),
 
 module.exports = Backbone.View.extend({
 
-    el: $('#content'),
+    className: 'divNewProject',
 
     events: {
-        'click #btnCreateProject': 'createProject'
+        'click button': 'createProject'
     },
 
     model: new ProjectModel(),
@@ -18,8 +18,7 @@ module.exports = Backbone.View.extend({
 
     render: function(){
         this.$el.html(this.template());
-        this.$el.find('input:first').focus();
-        return this;
+        return this.el;
     },
 
     createProject: function(){

@@ -10,6 +10,8 @@ module.exports = Backbone.View.extend({
         'click .btn-success': 'addUser'
     },
 
+    className: 'form-horizontal',
+
     collection: new UserCollection(),
 
     initialize: function(settings){

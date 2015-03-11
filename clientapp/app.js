@@ -7,19 +7,35 @@ app = {
 
     init: function (){
         Backbone.$ = $; // backbone needs to know where jQuery is
-        Backbone.history.start({silent: false});
 
-        if(navigator.userAgent.match(/msie\w9/gi)){
-            this.isIE9 = false;
-        } else {
-            this.isIE9 = true;
-        }
+        var s = document.createElement('p').style; // feature detection is better than browser sniffing
+        app.useTransitions = 'transition' in s ||
+            'WebkitTransition' in s ||
+            'MozTransition' in s ||
+            'msTransition' in s ||
+            'OTransition' in s;
+
+        this.currentView = null;
+
+        Backbone.history.start({silent: false});
     },
 
     renderView: function(newView){
-        newView.render();
-    }
+        var previousView;
+        if (app.currentView !== null) {
+            previousView = app.currentView;
+        }
+        app.currentView = newView;
+        if (!app.contentContainer) {
+            app.contentContainer = $('#content');
+        }
+        app.contentContainer.html(newView.render());
+        app.contentContainer.find('input:first').focus();
 
+        if (previousView) {
+            previousView.remove();
+        }
+    }
 };
 
 $(function(){

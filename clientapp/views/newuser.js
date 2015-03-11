@@ -4,7 +4,7 @@ var Backbone = require('backbone'),
 
 module.exports = Backbone.View.extend({
 
-    el: $('#content'),
+    className: 'divNewUser',
 
     events: {
         'click #btnCreate': 'createUser',
@@ -20,8 +20,7 @@ module.exports = Backbone.View.extend({
 
     render: function(){
         this.$el.html(this.template());
-        this.$el.find('input:first').focus();
-        return this;
+        return this.el;
     },
 
     checkKeypress: function(e){

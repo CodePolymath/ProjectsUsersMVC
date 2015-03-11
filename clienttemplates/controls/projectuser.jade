@@ -1,15 +1,14 @@
-.form-horizontal
-    form.divControls
-        select.form-control.selAddUser(data-id=projectid,id='selProject-'+projectid) Please select
-        label.radio-inline
-            input(type='radio',name='radCredential',value='1',checked)
-            | web
-        label.radio-inline
-            input(type='radio',name='radCredential',value='2')
-            | ssh
-        label.radio-inline
-            input(type='radio',name='radCredential',value='3')
-            | ftp
-    button.btn.btn-success(data-id=projectid)
-        span.glyphicon.glyphicon-plus
-    span.spnMessage Add a User
+form.divControls
+    select.form-control.selAddUser(data-id=projectid,id='selProject-'+projectid) Please select
+    label.radio-inline
+        input(type='radio',name='radCredential',value='1',checked)
+        | web
+    label.radio-inline
+        input(type='radio',name='radCredential',value='2')
+        | ssh
+    label.radio-inline
+        input(type='radio',name='radCredential',value='3')
+        | ftp
+button.btn.btn-success(data-id=projectid)
+    span.glyphicon.glyphicon-plus
+span.spnMessage Add a User
