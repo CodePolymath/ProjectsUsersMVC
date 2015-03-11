@@ -77,7 +77,6 @@ module.exports = Backbone.View.extend({
 
     addUserLi: function(data){
         var newLi = this.parentView.createLi(data,data.attributes.username);
-        console.log(this.$el.parent().find('.ulUsers'));
         this.$el.parent().find('.ulUsers').append(newLi).removeClass('hidden');
     },
 
