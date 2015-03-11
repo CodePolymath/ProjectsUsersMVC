@@ -1,8 +1,10 @@
 var sql_helper = require('../helpers/sql_conn'),
     mysql = require('mysql'),
+    extend = require('util')._extend;
     hasher = require('../helpers/hash');
 
-var connection = mysql.createConnection(sql_helper.SQL_CONN);
+var conSettings = extend({multipleStatements: true}, sql_helper.SQL_CONN);
+var connection = mysql.createConnection(conSettings);
 
 exports.getAll = function(req, res) {
     var filterBy = req.query.filter;
@@ -40,7 +42,7 @@ exports.checkUserExists = function (req, res) {
         if (!err){
             res.send(rows);
         } else {
-            res.status(403);
+            res.status(500);
             res.send('There was a problem querying that user. Please try again');
         }
     });
@@ -49,7 +51,7 @@ exports.checkUserExists = function (req, res) {
 exports.createUser = function(req, res) {
     var user = {};
 
-    if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
         user.userName = req.body.username;
         user.password = req.body.password;
         user.email = req.body.email;
@@ -84,6 +86,27 @@ exports.createUser = function(req, res) {
         } else {
             res.status(403);
             res.send('There was a problem creating a new user. Please try again');
+        }
+    });
+};
+
+exports.deleteUser = function(req, res) {
+    var user = {};
+
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
+        user.userId = req.body.id;
+    } else { // data passed as querystring (via Postman)
+        user.userId = req.query.id;
+    }
+
+    var strSQL = 'DELETE FROM blackbook.users WHERE id = ' + user.userId + '; DELETE FROM blackbook.projects_users WHERE userid = ' + user.userId + ';';
+
+    connection.query(strSQL, function(err, rows){
+        if (!err){
+            res.send(rows);
+        } else {
+            res.status(500);
+            res.send('There was a problem deleting the user. Please try again');
         }
     });
 };

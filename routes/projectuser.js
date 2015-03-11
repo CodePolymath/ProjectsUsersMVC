@@ -7,7 +7,7 @@ var connection = mysql.createConnection(conSettings);
 
 exports.createProjectUser = function(req, res) {
     var projectUser = {};
-    if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
         projectUser.projectId = req.body.projectid;
         projectUser.userId = req.body.userid;
         projectUser.userName = req.body.username;
@@ -55,7 +55,7 @@ exports.deleteProjectUser = function(req, res){
 
 exports.getAll = function(req, res) {
     var projectUser = {};
-    if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
         projectUser.projectId = req.body.projectid;
         projectUser.userId = req.body.userid;
     } else { // data passed as querystring (via Postman)

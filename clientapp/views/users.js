@@ -12,7 +12,8 @@ module.exports = Backbone.View.extend({
     events: {
         'change #selField': 'queryValues',
         'change #selValue': 'filterCollection',
-        'click #btnReset': 'resetView'
+        'click #btnReset': 'resetView',
+        'click .glyphicon-trash': 'deleteUser'
     },
 
     collection: new UserCollection(),
@@ -59,6 +60,25 @@ module.exports = Backbone.View.extend({
 
         }
         return this;
+    },
+
+    deleteUser: function(e){
+        var that = this;
+        var userid = e.target.getAttribute('data-id');
+        var liRemove = that.$el.find('#liUser-' + userid);
+        this.collection.get({id:userid}).destroy({
+            success: function(){
+                if (app.isIE9) {
+                    liRemove.remove();
+                } else {
+                    liRemove.addClass('fadeOut');
+                    that.$el.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                        liRemove.remove();
+                        that.$el.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+                    });
+                }
+            }
+        });
     },
 
     queryValues: function(){

@@ -6,7 +6,7 @@ var connection = mysql.createConnection(sql_helper.SQL_CONN);
 
 exports.login = function(req, res) {
     var user = {};
-    if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
         user.userName = req.body.username;
         user.password = req.body.password;
     } else { // data passed as querystring (via Postman)

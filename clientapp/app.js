@@ -8,6 +8,12 @@ app = {
     init: function (){
         Backbone.$ = $; // backbone needs to know where jQuery is
         Backbone.history.start({silent: false});
+
+        if(navigator.userAgent.match(/msie\w9/gi)){
+            this.isIE9 = false;
+        } else {
+            this.isIE9 = true;
+        }
     },
 
     renderView: function(newView){

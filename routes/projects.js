@@ -1,8 +1,9 @@
 var mysql = require('mysql'),
+    extend = require('util')._extend;
     sql_helper = require('../helpers/sql_conn');
 
-var connection = mysql.createConnection(sql_helper.SQL_CONN);
-
+var conSettings = extend({multipleStatements: true}, sql_helper.SQL_CONN);
+var connection = mysql.createConnection(conSettings);
 
 exports.getAll = function(req, res) {
     var strSQL = 'SELECT id, projectname, description FROM blackbook.projects;';
@@ -20,7 +21,7 @@ exports.getAll = function(req, res) {
 exports.createProject = function(req, res) {
     var project = {};
 
-    if (req.body && Object.keys(req.body).length > 1){ // data passed as POST payload
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
         project.projectName = req.body.projectname;
         project.description = req.body.description;
     } else { // data passed as querystring (via Postman)
@@ -43,6 +44,27 @@ exports.createProject = function(req, res) {
         } else {
             res.status(204);
             res.send('There was a problem creating a new project. Please try again');
+        }
+    });
+};
+
+exports.deleteProject = function(req, res) {
+    var project = {};
+
+    if (req.body && Object.keys(req.body).length > 0){ // data passed as POST payload
+        project.projectId = req.body.id;
+    } else { // data passed as querystring (via Postman)
+        project.projectId = req.query.id;
+    }
+
+    var strSQL = 'DELETE FROM blackbook.projects WHERE id = ' + project.projectId + '; DELETE FROM blackbook.projects_users WHERE projectid = ' + project.projectId + ';';
+
+    connection.query(strSQL, function(err, rows){
+        if (!err){
+            res.send(rows);
+        } else {
+            res.status(500);
+            res.send('There was a problem deleting the project. Please try again');
         }
     });
 };

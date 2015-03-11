@@ -48,6 +48,26 @@ ul {
     border: 1px solid #aaaaaa;
     border-radius: 3px;
     box-shadow: inset 0px 0px 4px 1px #cccccc;
+    position: relative;
+    transition: opacity .5s;
+}
+
+.liUsers.fadeOut, .liProjects.fadeOut{
+    opacity: 0;
+}
+
+.liUsers .glyphicon.glyphicon-trash, .liProjects .glyphicon.glyphicon-trash{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #666666;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.liUsers .glyphicon.glyphicon-trash:hover, .liProjects .glyphicon.glyphicon-trash:hover{
+    color: #ff2222;
+    text-decoration: none;
 }
 
 .liProjects .dl-horizontal {

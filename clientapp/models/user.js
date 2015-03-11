@@ -3,7 +3,7 @@ var Backbone = require('backbone');
 module.exports = Backbone.Model.extend({
     url: function() {
         if (this.id !== null) {
-            return '/api/users/' + this.id;
+            return '/api/users?id=' + this.id;
         } else {
             return '/api/createuser';
         }

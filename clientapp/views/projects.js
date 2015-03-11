@@ -14,7 +14,8 @@ module.exports = Backbone.View.extend({
         'change #selField': 'queryValues',
         'change #selValue': 'filterCollection',
         'click #btnReset': 'resetView',
-        'click .glyphicon-remove': 'removeProjectUser'
+        'click .glyphicon-remove': 'removeProjectUser',
+        'click .glyphicon-trash': 'deleteProject'
     },
 
     collection: new ProjectCollection(),
@@ -127,6 +128,25 @@ module.exports = Backbone.View.extend({
             },
             success: function(){
                 target.parentNode.parentNode.removeChild(target.parentNode);
+            }
+        });
+    },
+
+    deleteProject: function(e){
+        var that = this;
+        var id = e.target.getAttribute('data-id');
+        var liRemove = that.$el.find('#liProject-' + id);
+        this.collection.get({id: id}).destroy({
+            success: function(){
+                liRemove.addClass('fadeOut');
+                if (app.isIE9) {
+                    liRemove.remove();
+                } else {
+                    that.$el.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                        liRemove.remove();
+                        that.$el.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+                    });
+                }
             }
         });
     },

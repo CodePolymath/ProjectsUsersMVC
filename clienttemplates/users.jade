@@ -18,7 +18,7 @@ h4
 ul
     each model in models
         if model.showing
-            li.list-unstyled.liUsers
+            li.list-unstyled.liUsers(id='liUser-'+model.attributes.id)
                 dl.dl-horizontal
                     dt UserName:
                     dd= model.attributes.username
@@ -32,3 +32,4 @@ ul
                     dd= model.attributes.age
                     dt Gender:
                     dd= model.attributes.gender
+                a.glyphicon.glyphicon-trash(data-id=model.attributes.id)

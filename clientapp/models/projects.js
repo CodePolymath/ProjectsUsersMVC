@@ -4,5 +4,11 @@ var Backbone = require('backbone'),
 module.exports = Backbone.Collection.extend({
     model: ProjectModel,
 
-    url: '/api/projects'
+    url: function(){
+        if (this.id) {
+            return '/api/projects?id=' + this.id;
+        } else {
+            return '/api/projects';
+        }
+    }
 });

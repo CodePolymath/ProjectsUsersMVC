@@ -36,7 +36,9 @@ app.get('/api/projects', projects.getAll);
 app.get('/api/users', users.getAll);
 app.get('/api/projectuser', projectuser.getAll);
 app.get('/api/checkuser', users.checkUserExists);
-app.delete('/api/projectuser', projectuser.deleteProjectUser)
+app.delete('/api/projectuser', projectuser.deleteProjectUser);
+app.delete('/api/users', users.deleteUser);
+app.delete('/api/projects', projects.deleteProject);
 /* END ALL public routes */
 
 app.listen(3000);
