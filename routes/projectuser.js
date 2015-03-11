@@ -71,6 +71,7 @@ exports.getAll = function(req, res) {
     connection.query(strSQL, function(err, rows){
         if (!err) { // no matching data
             res.status(201);
+            res.setHeader('Cache-Control', 'no-cache');
             res.send(rows);
             return;
         } else {

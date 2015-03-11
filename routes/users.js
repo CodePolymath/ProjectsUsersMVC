@@ -28,6 +28,7 @@ exports.getAll = function(req, res) {
             res.send('No matching records found. Please try again');
             return;
         }
+        res.setHeader('Cache-Control', 'no-cache');
         res.send(rows);
     });
 };

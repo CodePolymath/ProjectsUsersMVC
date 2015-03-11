@@ -97,13 +97,17 @@ In cmd.exe:
         (you may need to adjust your MySql folder version)
     mysqladmin -u root password password
     mysqld
-    mysql -h localhost -u root -p
-
 At the password prompt, type:
-
     password
+        (starts MySQL server)
 
-You may have to adjust the port that MySQL is expected to run under in the app. There are TODO: comments next to the MySQL port number in the /routes/users.js and /routes/login.js files.
+In a new cmd.exe window:
+    mysql -h localhost -u root -p
+        (starts MySQL client)
+
+Now run the SQL scripts in the client MySQL session
+
+You may have to adjust the port that MySQL is expected to run under in the app. Update port number to 3306 for Windoze default MySQL port in the helpers/sql_conn.js file.
 
 Once you have installed Node and have MySQL running, you should be able to navigate to the solution's root folder on your local machine via a terminal app.
 
