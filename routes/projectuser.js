@@ -22,7 +22,7 @@ exports.createProjectUser = function(req, res) {
     connection.query(strSQL, function(err, rows){
         if (!err) { // no matching data
             res.status(201);
-            res.send(rows);
+            res.send(rows[1][0]); // drill down to the actual model returned
             return;
         } else {
             res.status(409);

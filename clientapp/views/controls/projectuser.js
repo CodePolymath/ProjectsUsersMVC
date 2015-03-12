@@ -64,8 +64,8 @@ module.exports = Backbone.View.extend({
                     credentialtype: that.$el.find('input[name="radCredential"]:checked').val()
                 });
                 this.model.save(null,{
-                    success: function(data){
-                        that.addUserLi(data);
+                    success: function(model, response, options){
+                        that.addUserLi(model);
                     },
                     error: function(model, response, options){
                         var spnMessage = that.$el.find('.spnMessage').html('Credential exists');
