@@ -107,7 +107,7 @@ In a new cmd.exe window:
 
 Now run the SQL scripts in the client MySQL session
 
-You may have to adjust the port that MySQL is expected to run under in the app. Update port number to 3306 for Windoze default MySQL port in the helpers/sql_conn.js file.
+You may need to adjust the port that MySQL is expected to run under in the app, although the app tries to determine the default MySQL port based on operating environment. Update default MySQL port in the helpers/sql_conn.js file for either Win or Mac environments.
 
 Once you have installed Node and have MySQL running, you should be able to navigate to the solution's root folder on your local machine via a terminal app.
 
